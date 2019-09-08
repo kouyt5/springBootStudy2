@@ -32,9 +32,6 @@ import java.io.Serializable;
 @Table(name = "tbUser")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    // ========================================================================
-    // fields =================================================================
     @Id
     @GeneratedValue
     /** 用户数据库主键 */
