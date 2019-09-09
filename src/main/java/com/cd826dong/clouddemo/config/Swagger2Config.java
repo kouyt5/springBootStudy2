@@ -13,6 +13,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.ApiListingReference;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -45,9 +46,8 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("SpringCloud Demo Projects RESTful APIs")
-                .description("http://api.cd826dong.com/")
-                .termsOfServiceUrl("https://cd826dong.com/")
-                .contact("CD826")
+                .description("springBoot 集成Swagger demo")
+                .contact(new Contact("ChenCong","1147893200@qq.com","1147893200@qq.com"))
                 .version("1.0.0")
                 .build();
     }

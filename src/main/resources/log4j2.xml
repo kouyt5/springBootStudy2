@@ -29,7 +29,7 @@ fatal： 级别比较高了。重大错误，这种级别你可以直接停止�
                 hostAddress : 本地ip地址 -->
         <property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t-%-3L] %-5level %logger{36} %l %M - %msg%xEx%n
         </property>
-        <property name="CONSOLE_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{1}.class %l - %msg%xEx%n
+        <property name="CONSOLE_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{1}.java %l - %msg%xEx%n
         </property>
     </properties>
     <!--先定义所有的appender(输出器) -->
@@ -47,37 +47,41 @@ fatal： 级别比较高了。重大错误，这种级别你可以直接停止�
         <File name="TestLog" fileName="${logPath}/test.log" append="true">
             <PatternLayout pattern="${PATTERN}"/>
         </File>
-        <!-- 把error等级记录到文件 一般不用 -->
-        <File name="FileLog" fileName="${logPath}/error.log">
-            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
-            <PatternLayout pattern="${PATTERN}"/>
-        </File>
         <!--输出到循环日志，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
         <RollingRandomAccessFile name="RollingFileLog" fileName="${logPath}/app.log"
-                     filePattern="${logPath}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
-            <ThresholdFilter level="trace" onMatch="ACCEPT" onMismatch="DENY"/>
+                                 filePattern="${logPath}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
             <SizeBasedTriggeringPolicy size="10MB"/>
+        <RollingRandomAccessFile name="ErrorLog" fileName="${logPath}/error.log"
+                                 filePattern="${logPath}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${PATTERN}"/>
+            <SizeBasedTriggeringPolicy size="1MB"/>
         </RollingRandomAccessFile>
     </Appenders>
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
     <Loggers>
         <!--建立一个默认的Root的logger，记录大于level高于warn的信息，如果这里的level高于Appenders中的，则Appenders中也是以此等级为起点，比如，这里level="fatal"，则Appenders中只出现fatal信息 -->
         <!-- 生产环境level>=warn -->
-        <Root level="debug">
+        <Root level="trace">
             <!-- 输出器,可选上面定义的任何项组合，或全选，做到可随意定制 -->
             <appender-ref ref="ConsoleLog"/>
-            <appender-ref ref="TestLog"/>
-            <appender-ref ref="FileLog"/>
+            <appender-ref ref="ErrorLog"/>
             <appender-ref ref="RollingFileLog"/>
         </Root>
-        <!--级别大于level的将会被过滤，最高为fatal additivity为false表示不会在其他地方输出 -->
-        <Logger name="org.springframework" level="debug" additivity="false">
-            <appender-ref ref="FileLog"/>
+        <!--级别大于level的将会被过滤 additivity为false表示不会在其他地方输出 -->
+        <Logger name="org.springframework" level="error" additivity="true">
+            <appender-ref ref="ConsoleLog"/>
         </Logger>
-        <Logger name="org.hibernate" level="trace" additivity="false">
-            <appender-ref ref="FileLog"/>
+        <Logger name="org.hibernate" level="error" additivity="true">
+            <appender-ref ref="ConsoleLog"/>
         </Logger>
-        <Logger name="springfox.documentation" level="trace" additivity="false"/>
+        <Logger name="springfox.documentation" level="error" additivity="true">
+            <appender-ref ref="ConsoleLog"/>
+        </Logger>
+        <Logger name="io.swagger" level="trace" additivity="false">
+            <appender-ref ref="RollingFileLog"/>
+        </Logger>
     </Loggers>
 </Configuration>
