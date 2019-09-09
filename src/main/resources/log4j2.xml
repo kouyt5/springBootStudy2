@@ -72,8 +72,12 @@ fatal： 级别比较高了。重大错误，这种级别你可以直接停止�
             <appender-ref ref="RollingFileLog"/>
         </Root>
         <!--级别大于level的将会被过滤，最高为fatal additivity为false表示不会在其他地方输出 -->
-        <Logger name="org.springframework" level="trace" additivity="false"/>
-        <Logger name="org.hibernate" level="trace" additivity="false"/>
+        <Logger name="org.springframework" level="debug" additivity="false">
+            <appender-ref ref="FileLog"/>
+        </Logger>
+        <Logger name="org.hibernate" level="trace" additivity="false">
+            <appender-ref ref="FileLog"/>
+        </Logger>
         <Logger name="springfox.documentation" level="trace" additivity="false"/>
     </Loggers>
 </Configuration>
