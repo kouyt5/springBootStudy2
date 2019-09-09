@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/users")
-@Api(value = "UserEndpoint", description = "用户管理相关Api")
+@Api(tags = "user", description = "用户管理Api")
 public class UserEndpoint {
     @Autowired
     private UserService userService;
@@ -47,7 +47,7 @@ public class UserEndpoint {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    @ApiOperation(value = "获取用户分页数据", notes = "获取用户分页数据", httpMethod = "GET", tags = "用户管理相关Api")
+    @ApiOperation(value = "获取用户分页数据", notes = "获取用户分页数据", httpMethod = "GET",tags = "user")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "第几页，从0开始，默认为第0页", dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "每一页记录数的大小，默认为20", dataType = "int", paramType = "query"),
@@ -69,7 +69,7 @@ public class UserEndpoint {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ApiOperation(value = "获取用户详情数据", notes = "获取用户详情数据", httpMethod = "GET", tags = "用户管理相关Api")
+    @ApiOperation(value = "获取用户详情数据", notes = "获取用户详情数据", httpMethod = "GET",tags = "user")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户的主键", dataType = "int", paramType = "path")
     })
@@ -84,7 +84,7 @@ public class UserEndpoint {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    @ApiOperation(value = "更新用户详情数据", notes = "更新用户详情数据", httpMethod = "POST", tags = "用户管理相关Api")
+    @ApiOperation(value = "更新用户详情数据", notes = "更新用户详情数据", httpMethod = "POST",tags = "user")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户的主键", dataType = "int", paramType = "path"),
             @ApiImplicitParam(name = "userDto", value = "用户详情数据", dataType = "UserDto", paramType = "body"),
@@ -101,7 +101,7 @@ public class UserEndpoint {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @ApiOperation(value = "删除指定用户", notes = "删除指定用户", httpMethod = "DELETE", tags = "用户管理相关Api")
+    @ApiOperation(value = "删除指定用户", notes = "删除指定用户", httpMethod = "DELETE",tags = "user")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "所要删除用户的主键", dataType = "int", paramType = "path")
     })

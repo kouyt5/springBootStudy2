@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/products")
-@Api(value = "ProductEndpoint", description = "商品管理相关Api")
+@Api(tags = "product", description = "商品管理Api")
 public class ProductEndpoint {
     @Autowired
     private ProductService productService;
@@ -56,7 +56,7 @@ public class ProductEndpoint {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    @ApiOperation(value = "获取商品分页数据", notes = "获取商品分页数据", httpMethod = "GET", tags = "商品管理相关Api")
+    @ApiOperation(value = "获取商品分页数据", notes = "获取商品分页数据", httpMethod = "GET",tags = "product")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "第几页，从0开始，默认为第0页", dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "每一页记录数的大小，默认为20", dataType = "int", paramType = "query"),
@@ -73,7 +73,7 @@ public class ProductEndpoint {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ApiOperation(value = "获取商品详情数据", notes = "获取商品详情数据", httpMethod = "GET", tags = "商品管理相关Api")
+    @ApiOperation(value = "获取商品详情数据", notes = "获取商品详情数据", httpMethod = "GET", tags = "product")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "商品的主键", dataType = "int", paramType = "path")
     })
@@ -85,7 +85,7 @@ public class ProductEndpoint {
     }
 
     @RequestMapping(value = "/{id}/comments", method = RequestMethod.GET)
-    @ApiOperation(value = "获取商品的评论列表", notes = "获取商品的评论列表", httpMethod = "GET", tags = "商品管理相关Api")
+    @ApiOperation(value = "获取商品的评论列表", notes = "获取商品的评论列表", httpMethod = "GET", tags = "product")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "商品的主键", dataType = "int", paramType = "path")
     })
