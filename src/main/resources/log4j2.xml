@@ -53,6 +53,7 @@ fatal： 级别比较高了。重大错误，这种级别你可以直接停止�
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
             <SizeBasedTriggeringPolicy size="10MB"/>
+        </RollingRandomAccessFile>
         <RollingRandomAccessFile name="ErrorLog" fileName="${logPath}/error.log"
                                  filePattern="${logPath}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
