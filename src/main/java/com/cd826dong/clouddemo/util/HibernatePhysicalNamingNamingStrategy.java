@@ -45,7 +45,7 @@ public class HibernatePhysicalNamingNamingStrategy extends PhysicalNamingStrateg
             return identifier;
         }
 
-        String regex = "([a-z])([A-Z])";
+        String regex = "([a-z]+)([A-Z]+)";
         String replacement = "$1_$2";
         String newName = identifier.getText().replaceAll(regex, replacement).toLowerCase();
         return Identifier.toIdentifier(newName);
