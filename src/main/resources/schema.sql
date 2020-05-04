@@ -1,7 +1,22 @@
 drop table if exists tbProduct;
 drop table if exists tbProduct_Comment;
 drop table if exists tbUser;
-
+DROP TABLE IF EXISTS erShou;
+CREATE TABLE erShou  (
+                            data varchar(255)  NULL DEFAULT NULL,
+                            district_name varchar(255)  NULL DEFAULT NULL,
+                            resblock_name varchar(255)  NULL DEFAULT NULL,
+                            title varchar(255)  NULL DEFAULT NULL,
+                            total_price varchar(255)  NULL DEFAULT NULL,
+                            floor varchar(255)  NULL DEFAULT NULL,
+                            years varchar(255)  NULL DEFAULT NULL,
+                            hall_num varchar(255)  NULL DEFAULT NULL,
+                            area varchar(255)  NULL DEFAULT NULL,
+                            direction varchar(255)  NULL DEFAULT NULL,
+                            pictures varchar(255)  NULL DEFAULT NULL,
+                            id int(12) UNSIGNED  NOT NULL AUTO_INCREMENT,
+                            PRIMARY KEY (id)
+) ;
 -- 商品表
 create table tbProduct
 (
