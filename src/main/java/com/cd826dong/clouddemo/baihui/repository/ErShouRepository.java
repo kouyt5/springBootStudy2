@@ -1,7 +1,6 @@
 package com.cd826dong.clouddemo.baihui.repository;
 
 import com.cd826dong.clouddemo.baihui.entity.ErShouHouse;
-import com.cd826dong.clouddemo.product.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

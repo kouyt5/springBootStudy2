@@ -14,15 +14,10 @@
 package com.cd826dong.clouddemo.product.dto;
 
 import com.cd826dong.clouddemo.product.entity.Product;
-import com.cd826dong.clouddemo.product.entity.ProductComment;
 import com.google.common.base.MoreObjects;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
 

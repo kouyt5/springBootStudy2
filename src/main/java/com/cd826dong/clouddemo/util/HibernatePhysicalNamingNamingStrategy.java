@@ -30,6 +30,9 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public class HibernatePhysicalNamingNamingStrategy extends PhysicalNamingStrategyStandardImpl {
+
+    private static final long serialVersionUID = -6492483892500663004L;
+
     @Override
     public Identifier toPhysicalTableName(Identifier name, JdbcEnvironment context) {
         return new Identifier(name.getText(), name.isQuoted());

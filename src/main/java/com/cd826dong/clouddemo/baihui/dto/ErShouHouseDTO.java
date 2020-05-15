@@ -9,7 +9,8 @@ import java.io.Serializable;
 
 @ApiModel(value = "二手房信息包")
 public class ErShouHouseDTO implements Serializable {
-    @ApiModelProperty(value="商品主键Id")
+    private static final long serialVersionUID = 6970946257889016657L;
+    @ApiModelProperty(value = "商品主键Id")
     private Long id;
     /** 房子的简介 */
     @ApiModelProperty(value="二手房名称")

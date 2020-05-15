@@ -2,13 +2,7 @@ package com.cd826dong.clouddemo.baihui.api;
 
 import com.cd826dong.clouddemo.baihui.dto.ErShouHouseDTO;
 import com.cd826dong.clouddemo.baihui.entity.ErShouHouse;
-import com.cd826dong.clouddemo.baihui.repository.ErShouRepository;
 import com.cd826dong.clouddemo.baihui.service.HouseSaleService;
-import com.cd826dong.clouddemo.product.dto.ProductCommentDto;
-import com.cd826dong.clouddemo.product.dto.ProductDto;
-import com.cd826dong.clouddemo.user.dto.UserDto;
-import com.cd826dong.clouddemo.product.entity.Product;
-import com.cd826dong.clouddemo.product.entity.ProductComment;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -37,8 +31,6 @@ import java.util.stream.Collectors;
 public class Baihui {
     @Autowired
     private HouseSaleService houseSaleService;
-    @Autowired
-    private ErShouRepository erShouRepository;
 
     /**
      * 获取产品信息列表
